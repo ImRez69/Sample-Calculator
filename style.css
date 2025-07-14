@@ -73,13 +73,14 @@ main {
   background-color: #2c3e4e;
   border: 2px solid #37556d;
   border-radius: 8px;
-  margin-top: 8vh;
+  margin-top: 6vh;
   padding: 0px 2% 2%;
   position: relative;
 }
 
-input#display-input {
+input[type="text"]#display-input {
   width: 100%;
+  height: min(4.5vh,38px);
   margin-bottom: 20px;
   background: rgba(245, 248, 250, 0.04);
   color: #f5f8fa;
@@ -89,6 +90,7 @@ input#display-input {
   caret-color: rgba(0, 0, 0, 0);
   padding: 2% 4%;
   top: 0;
+  text-shadow: -2px 2px 2px #151d25;
 }
 
 button.row:nth-child(2),
