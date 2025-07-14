@@ -1,0 +1,69 @@
+@font-face {
+  font-family: Atma;
+  src: local("Atma-Regular"), url(./Font/Atma-Regular.ttf) format(truetype);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Atma;
+}
+
+html {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  width: clamp(200px, 60%, 300px);
+  transition: 200ms;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+body.dark {
+  color: #f5f8fa;
+  background: #151d25;
+}
+
+body.light {
+  color: #151d25;
+  background: #f5f8fa;
+}
+
+header#title {
+  display: flex;
+  align-items: end;
+  margin-top: 10%;
+  font-size: 1.5rem;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+#date {
+  width: 50%;
+}
+
+#theme-btn {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 40px;
+  filter: drop-shadow(2px 2px 4px rgba(245, 248, 250, 0.2));
+  width: 55px;
+  height: 50px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+}
