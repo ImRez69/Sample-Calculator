@@ -74,7 +74,7 @@ main {
   border: 2px solid #37556d;
   border-radius: 8px;
   margin-top: 8vh;
-  padding: 0px 8px 8px;
+  padding: 0px 2% 2%;
   position: relative;
 }
 
@@ -95,7 +95,7 @@ button.row:nth-child(2),
 button.row:nth-child(3),
 button.row:nth-child(4),
 button.row:nth-child(5) {
-  margin-top: 60px;
+  margin-top: 50px;
 }
 
 button.row {
