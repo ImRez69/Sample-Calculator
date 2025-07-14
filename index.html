@@ -2,23 +2,55 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calculator</title>
-  <link rel="stylesheet" href="./style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body id="body" class="dark">
 
-  <header id="title">
-    <div id="date">0/00/2025</div>
-    <button id="theme-btn">🌙</button>
-  </header>
+    <header id="title">
+        <div id="date"></div>
+        <button id="theme-btn">🌙</button>
+    </header>
 
-  <main>
-  </main>
+    <main>
+        <input type="text" id="display-input">
 
-  <script src="script.js"></script>
+        <!-- Row 1 -->
+        <button type="button" class="row operator">AC</button>
+        <button type="button" class="row operator">DEL</button>
+        <button type="button" class="row operator">%</button>
+        <button type="button" class="row operator">/</button>
+        
+        <!-- Row 2 -->
+        <button type="button" class="row">7</button>
+        <button type="button" class="row">8</button>
+        <button type="button" class="row">9</button>
+        <button type="button" class="row operator">*</button>
+        
+        <!-- Row 3 -->
+        <button type="button" class="row">4</button>
+        <button type="button" class="row">5</button>
+        <button type="button" class="row">6</button>
+        <button type="button" class="row operator">+</button>
+        
+        <!-- Row 4 -->
+        <button type="button" class="row">1</button>
+        <button type="button" class="row">2</button>
+        <button type="button" class="row">3</button>
+        <button type="button" class="row operator">-</button>
+        
+        <!-- Row 5 -->
+        <button type="button" class="row operator">± </button>
+        <button type="button" class="row">0</button>
+        <button type="button" class="row">.</button>
+        <button type="button" class="row operator">=</button>
+
+    </main>
+
+    <script src="script.js"></script>
 
 </body>
 
