@@ -36,6 +36,7 @@ const buttons = document.querySelectorAll("button.row");
 let result = "";
 const buttonAction = (e) => {
   const targetText = e.target.textContent;
+//   console.log(displayInput.value.lastIndexOf());
 
   switch (true) {
     // case displayInput.value === "":
@@ -45,14 +46,17 @@ const buttonAction = (e) => {
       result = displayInput.value = eval(displayInput.value);
       displayInput.value = result;
       break;
-    case targetText === "َAC":
+
+    case targetText === "AC":
       result = "";
       displayInput.value = result;
+      console.log("test");
       break;
 
     case targetText === "DEL":
-      result = displayInput.value = eval(displayInput.value);
-      displayInput.value = result;
+      displayInput.value = displayInput.value.indexOf() - 1;
+      //   result = displayInput.value = eval(displayInput.value);
+      //   displayInput.value = result;
       break;
 
     default:
@@ -62,4 +66,6 @@ const buttonAction = (e) => {
   }
 };
 
-buttons.forEach((button) => { button.addEventListener("click", buttonAction)});
+buttons.forEach((button) => {
+  button.addEventListener("click", buttonAction);
+});
