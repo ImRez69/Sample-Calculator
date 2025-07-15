@@ -1,14 +1,14 @@
 @font-face {
-  font-family: Atma;
+  font-family: Vazirmatn;
   src: local("Vazirmatn-UI-FD-Regular"),
-    url(./Font/Vazirmatn-UI-FD-Regular.ttf) format(truetype);
+    url(./Font/Vazirmatn.ttf) format(truetype);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Atma;
+  font-family: Vazirmatn;
   border: none;
   outline: none;
 }
