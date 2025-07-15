@@ -53,22 +53,6 @@ const buttonAction = (e) => {
       return;
 
     case targetText === "=":
-      // if (result.includes("%")) {
-      //   switch (true) {
-      //     case result.includes("+"):
-
-      //       break;
-
-      //     case result.includes("-"):
-      //       break;
-
-      //     case result.includes("*"):
-      //       break;
-
-      //     case result.includes("/"):
-      //       break;
-      //   }
-      // }
 
       result = displayInput.value = eval(displayInput.value);
       displayInput.value = result;
@@ -88,9 +72,9 @@ const buttonAction = (e) => {
       break;
 
     case targetText === "%":
+      
       for (let i = 0; i < operatorAddToInput.length; i++) {
-        console.log(result.includes(operatorAddToInput[i]));
-        if (result.includes(operatorAddToInput[i])) {
+        if (result.toString().includes(operatorAddToInput[i])) {
           return;
         }
       }
