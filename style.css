@@ -1,6 +1,6 @@
 @font-face {
   font-family: Vazirmatn;
-  src: local("Vazirmatn-UI-FD-Regular"),
+  src: local("Vazirmatn"),
     url(./Font/Vazirmatn.ttf) format(truetype);
 }
 
