@@ -51,16 +51,16 @@ header#title {
 }
 
 #theme-btn {
-  background: none;
-  font-size: 2.5rem;
-  filter: drop-shadow(2px 2px 4px rgba(245, 248, 250, 0.2));
-  width: 55px;
-  height: 50px;
+  /* background: none; */
+  /* font-size: 2rem; */
+  /* filter: drop-shadow(2px 2px 4px rgba(245, 248, 250, 0.2)); */
+  /* width: 55px;
+  height: 50px; */
   transition: 50ms linear all;
 }
 
 #theme-btn:active {
-  transform: scale(0.9);
+  transform: scale(0.95);
 }
 
 main {
@@ -80,15 +80,14 @@ main {
 
 input[type="text"]#display-input {
   width: 100%;
-  height: min(4.5vh,38px);
-  margin-bottom: 20px;
+  height: max(6vh,52px);
   background: rgba(245, 248, 250, 0.04);
   color: #f5f8fa;
   font-size: 1.2rem;
   backdrop-filter: blur(5px);
   position: absolute;
   caret-color: rgba(0, 0, 0, 0);
-  padding: 2% 4%;
+  padding: 2% 5%;
   top: 0;
   text-shadow: -2px 2px 2px #151d25;
 }
@@ -97,7 +96,7 @@ button.row:nth-child(2),
 button.row:nth-child(3),
 button.row:nth-child(4),
 button.row:nth-child(5) {
-  margin-top: 50px;
+  margin-top: max(7.5vh,65px);
 }
 
 button.row {

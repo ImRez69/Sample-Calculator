@@ -35,37 +35,48 @@ const displayInput = document.getElementById("display-input");
 const buttons = document.querySelectorAll("button.row");
 let result = "";
 
+// Read Last Result From Local Storge
+if (localStorage.getItem("lastResult")) {
+  displayInput.value = localStorage.getItem("lastResult");
+}
+
 const buttonAction = (e) => {
-  
   const targetText = e.target.textContent;
-  //   console.log(displayInput.value.lastIndexOf());
 
   switch (true) {
-    // case displayInput.value === "":
-    //     return;
+    // Theme Button
+    case targetText === "☀️" || targetText === "🌙":
+      return;
+
+    // Calculator Buttons
+    case displayInput.value === "" && targetText === "=":
+      return;
 
     case targetText === "=":
       result = displayInput.value = eval(displayInput.value);
       displayInput.value = result;
+      localStorage.setItem("lastResult", result);
       break;
 
     case targetText === "AC":
       result = "";
       displayInput.value = result;
-      console.log("test");
+      localStorage.setItem("lastResult", result);
       break;
 
     case targetText === "DEL":
-      displayInput.value = displayInput.value.indexOf() - 1;
-      //   result = displayInput.value = eval(displayInput.value);
-      //   displayInput.value = result;
+      result = result.toString().slice(0, -1);
+      displayInput.value = result;
+      localStorage.setItem("lastResult", result);
       break;
 
     default:
       result += targetText;
       displayInput.value = result;
+      localStorage.setItem("lastResult", result);
       break;
   }
 };
-
-buttons.forEach((button) => {button.addEventListener("click", buttonAction)});
+buttons.forEach((button) => {
+  button.addEventListener("click", buttonAction);
+});
