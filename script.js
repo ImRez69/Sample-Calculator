@@ -1,20 +1,18 @@
 const themeBtn = document.getElementById("theme-btn");
 let lightTheme = document.body.classList.contains("light");
-themeBtn.addEventListener(
-  "click",
-  (toggleTheme = () => {
-    if (lightTheme) {
-      themeBtn.innerText = "🌙";
-      document.body.classList.replace("light", "dark");
-      lightTheme = false;
-    } else {
-      themeBtn.innerText = "☀️";
-      document.body.classList.replace("dark", "light");
-      lightTheme = true;
-    }
-    localStorage.setItem("Light Theme", `${lightTheme}`);
-  })
-);
+const toggleTheme = () => {
+  if (lightTheme) {
+    themeBtn.innerText = "🌙";
+    document.body.classList.replace("light", "dark");
+    lightTheme = false;
+  } else {
+    themeBtn.innerText = "☀️";
+    document.body.classList.replace("dark", "light");
+    lightTheme = true;
+  }
+  localStorage.setItem("Light Theme", `${lightTheme}`);
+};
+themeBtn.addEventListener("click", toggleTheme);
 
 (function currentStatus() {
   // Theme
@@ -27,16 +25,20 @@ themeBtn.addEventListener(
     document.body.classList.replace("light", "dark");
     lightTheme = false;
   }
+
   // Date
   document.getElementById("date").innerText = new Date().toLocaleDateString();
 })();
 
+// Calculator Elements Select & Variable
 const displayInput = document.getElementById("display-input");
 const buttons = document.querySelectorAll("button.row");
 let result = "";
+
 const buttonAction = (e) => {
+  
   const targetText = e.target.textContent;
-//   console.log(displayInput.value.lastIndexOf());
+  //   console.log(displayInput.value.lastIndexOf());
 
   switch (true) {
     // case displayInput.value === "":
@@ -66,6 +68,4 @@ const buttonAction = (e) => {
   }
 };
 
-buttons.forEach((button) => {
-  button.addEventListener("click", buttonAction);
-});
+buttons.forEach((button) => {button.addEventListener("click", buttonAction)});
