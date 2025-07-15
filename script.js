@@ -42,17 +42,32 @@ if (localStorage.getItem("lastResult")) {
 
 const buttonAction = (e) => {
   const targetText = e.target.textContent;
-
   switch (true) {
     // Theme Button
     case targetText === "☀️" || targetText === "🌙":
       return;
 
-    // Calculator Buttons
+    // Calculator Buttons & Action
     case displayInput.value === "" && targetText === "=":
       return;
 
     case targetText === "=":
+      if (result.includes("%")) {
+        switch (true) {
+          case result.includes("+"):
+            break;
+
+          case result.includes("-"):
+            break;
+
+          case result.includes("*"):
+            break;
+
+          case result.includes("/"):
+            break;
+        }
+      }
+
       result = displayInput.value = eval(displayInput.value);
       displayInput.value = result;
       localStorage.setItem("lastResult", result);

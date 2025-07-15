@@ -1,7 +1,6 @@
 @font-face {
   font-family: Vazirmatn;
-  src: local("Vazirmatn"),
-    url(./Font/Vazirmatn.ttf) format(truetype);
+  src: local("Vazirmatn"), url(./Font/Vazirmatn.ttf) format(truetype);
 }
 
 * {
@@ -45,17 +44,12 @@ header#title {
   margin-top: 4vh;
   font-size: 1.5rem;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
 }
 
 #theme-btn {
-  /* background: none; */
-  /* font-size: 2rem; */
-  /* filter: drop-shadow(2px 2px 4px rgba(245, 248, 250, 0.2)); */
-  /* width: 55px;
-  height: 50px; */
   transition: 50ms linear all;
 }
 
@@ -80,7 +74,7 @@ main {
 
 input[type="text"]#display-input {
   width: 100%;
-  height: max(6vh,52px);
+  height: max(6vh, 52px);
   background: rgba(245, 248, 250, 0.04);
   color: #f5f8fa;
   font-size: 1.2rem;
@@ -96,7 +90,7 @@ button.row:nth-child(2),
 button.row:nth-child(3),
 button.row:nth-child(4),
 button.row:nth-child(5) {
-  margin-top: max(7.5vh,65px);
+  margin-top: max(7.5vh, 65px);
 }
 
 button.row {
