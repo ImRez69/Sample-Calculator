@@ -33,6 +33,7 @@ themeBtn.addEventListener("click", toggleTheme);
 // Calculator Elements Select & Variable
 const displayInput = document.getElementById("display-input");
 const buttons = document.querySelectorAll("button.row");
+let operatorAddToInput = ["+", "-", "*", "/"];
 let result = "";
 
 // Read Last Result From Local Storge
@@ -52,21 +53,22 @@ const buttonAction = (e) => {
       return;
 
     case targetText === "=":
-      if (result.includes("%")) {
-        switch (true) {
-          case result.includes("+"):
-            break;
+      // if (result.includes("%")) {
+      //   switch (true) {
+      //     case result.includes("+"):
 
-          case result.includes("-"):
-            break;
+      //       break;
 
-          case result.includes("*"):
-            break;
+      //     case result.includes("-"):
+      //       break;
 
-          case result.includes("/"):
-            break;
-        }
-      }
+      //     case result.includes("*"):
+      //       break;
+
+      //     case result.includes("/"):
+      //       break;
+      //   }
+      // }
 
       result = displayInput.value = eval(displayInput.value);
       displayInput.value = result;
@@ -81,6 +83,18 @@ const buttonAction = (e) => {
 
     case targetText === "DEL":
       result = result.toString().slice(0, -1);
+      displayInput.value = result;
+      localStorage.setItem("lastResult", result);
+      break;
+
+    case targetText === "%":
+      for (let i = 0; i < operatorAddToInput.length; i++) {
+        console.log(result.includes(operatorAddToInput[i]));
+        if (result.includes(operatorAddToInput[i])) {
+          return;
+        }
+      }
+      result /= 100;
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
       break;
