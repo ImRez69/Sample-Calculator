@@ -33,7 +33,6 @@ themeBtn.addEventListener("click", toggleTheme);
 // Calculator Elements Select & Variable
 const displayInput = document.getElementById("display-input");
 const buttons = document.querySelectorAll("button.row");
-// let operatorAddToInput = ["+", "-", "*", "/"];
 let operatorAddToInput = { "+": 0, "-": 0, "*": 0, "/": 0 };
 const operatorKeys = Object.keys(operatorAddToInput);
 let result = "";
