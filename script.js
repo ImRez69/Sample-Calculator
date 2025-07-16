@@ -33,7 +33,9 @@ themeBtn.addEventListener("click", toggleTheme);
 // Calculator Elements Select & Variable
 const displayInput = document.getElementById("display-input");
 const buttons = document.querySelectorAll("button.row");
-let operatorAddToInput = ["+", "-", "*", "/"];
+// let operatorAddToInput = ["+", "-", "*", "/"];
+let operatorAddToInput = { "+": 0, "-": 0, "*": 0, "/": 0 };
+const operatorKeys = Object.keys(operatorAddToInput);
 let result = "";
 
 // Read Last Result From Local Storge
@@ -53,7 +55,6 @@ const buttonAction = (e) => {
       return;
 
     case targetText === "=":
-
       result = displayInput.value = eval(displayInput.value);
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
@@ -66,21 +67,35 @@ const buttonAction = (e) => {
       break;
 
     case targetText === "DEL":
+      const lastChar = result.toString().slice(result.length - 1);
+      if(lastChar === "+" || lastChar === "-" || lastChar === "*" || lastChar === "/"){operatorAddToInput[lastChar]--}
       result = result.toString().slice(0, -1);
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
       break;
 
     case targetText === "%":
-      
-      for (let i = 0; i < operatorAddToInput.length; i++) {
-        if (result.toString().includes(operatorAddToInput[i])) {
+      for (let i = 0; i < operatorKeys.length; i++) {
+        if (result.toString().includes(operatorKeys[i])) {
           return;
         }
       }
       result /= 100;
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
+      break;
+
+    case targetText === "+" || targetText === "-" || targetText === "*" || targetText === "/":
+      for (let i = 0; i < operatorKeys.length; i++) {
+        if (operatorAddToInput[operatorKeys[i]]) {
+          return;
+        }
+      }
+      operatorAddToInput[targetText]++;
+      result += targetText;
+      displayInput.value = result;
+      localStorage.setItem("lastResult", result);
+
       break;
 
     default:
