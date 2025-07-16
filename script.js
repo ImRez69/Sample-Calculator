@@ -60,8 +60,10 @@ const buttonAction = (e) => {
       break;
 
     case targetText === "AC":
+      operatorKeys.forEach( (operator) => operatorAddToInput[operator]=0 )
       result = "";
       displayInput.value = result;
+
       localStorage.setItem("lastResult", result);
       break;
 
