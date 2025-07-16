@@ -87,6 +87,7 @@ const buttonAction = (e) => {
       break;
 
     case targetText === "+" || targetText === "-" || targetText === "*" || targetText === "/":
+      if(result ===""){return}
       for (let i = 0; i < operatorKeys.length; i++) {
         if (operatorAddToInput[operatorKeys[i]]) {
           return;
