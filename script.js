@@ -60,6 +60,21 @@ if (localStorage.getItem("lastResult")) {
   displayInput.value = localStorage.getItem("lastResult");
 }
 
+function checkEntry(entry) {
+  const entryArray = entry.split("");
+  const entryExisted = entryArray.map((entryLetter) =>
+    validInput.includes(entryLetter)
+  );
+
+  if (entryExisted.includes(false)) {
+    return;
+  } else {
+    result = eval(entry);
+    displayInput.value = result;
+    localStorage.setItem("lastResult", result);
+  }
+}
+
 const buttonAction = (e) => {
   const targetText = e.target.textContent;
   switch (true) {
@@ -73,23 +88,6 @@ const buttonAction = (e) => {
 
     case targetText === "=":
       operatorKeys.forEach((operator) => (operatorAddToInput[operator] = 0));
-
-      function checkEntry(entry) {
-        const entryArray = entry.split("");
-        const entryExisted = entryArray.map((entryLetter) =>
-          validInput.includes(entryLetter)
-        );
-
-        if (entryExisted.includes(false)) {
-          console.log("entryExisted Have False Item");
-          return;
-        } else {
-          console.log(entry);
-          result = eval(entry);
-          displayInput.value = result;
-          localStorage.setItem("lastResult", result);
-        }
-      }
       checkEntry(displayInput.value);
       break;
 
@@ -130,6 +128,19 @@ const buttonAction = (e) => {
       localStorage.setItem("lastResult", result);
       break;
 
+    case targetText === ".":
+      if (result === "") {
+        return;
+      }
+      if (dotUsed > 0) {
+        return;
+      }
+      dotUsed++;
+      result += targetText;
+      displayInput.value = result;
+      localStorage.setItem("lastResult", result);
+      break;
+
     case targetText === "+" ||
       targetText === "-" ||
       targetText === "*" ||
@@ -147,19 +158,6 @@ const buttonAction = (e) => {
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
 
-      break;
-
-    case targetText === ".":
-      if (result === "") {
-        return;
-      }
-      if (dotUsed > 0) {
-        return;
-      }
-      dotUsed++;
-      result += targetText;
-      displayInput.value = result;
-      localStorage.setItem("lastResult", result);
       break;
 
     default:
