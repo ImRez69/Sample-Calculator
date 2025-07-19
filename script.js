@@ -141,10 +141,7 @@ const buttonAction = (e) => {
       localStorage.setItem("lastResult", result);
       break;
 
-    case targetText === "+" ||
-      targetText === "-" ||
-      targetText === "*" ||
-      targetText === "/":
+    case targetText === "+" || targetText === "-" || targetText === "*" || targetText === "/":
       if (result === "") {
         return;
       }
