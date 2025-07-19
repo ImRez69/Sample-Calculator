@@ -33,8 +33,25 @@ themeBtn.addEventListener("click", toggleTheme);
 // Calculator Elements Select & Variable
 const displayInput = document.getElementById("display-input");
 const buttons = document.querySelectorAll("button.row");
-const validInput = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9","+","-","*","/"];
+const validInput = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  ".",
+  "+",
+  "-",
+  "*",
+  "/",
+];
 let operatorAddToInput = { "+": 0, "-": 0, "*": 0, "/": 0 };
+let dotUsed = 0;
 const operatorKeys = Object.keys(operatorAddToInput);
 let result = "";
 
@@ -56,10 +73,12 @@ const buttonAction = (e) => {
 
     case targetText === "=":
       operatorKeys.forEach((operator) => (operatorAddToInput[operator] = 0));
-      
-      function checkEntry(entry){
-        const entryArray = entry.split("")
-        const entryExisted = entryArray.map((entryLetter)=>validInput.includes(entryLetter));
+
+      function checkEntry(entry) {
+        const entryArray = entry.split("");
+        const entryExisted = entryArray.map((entryLetter) =>
+          validInput.includes(entryLetter)
+        );
 
         if (entryExisted.includes(false)) {
           console.log("entryExisted Have False Item");
@@ -71,7 +90,7 @@ const buttonAction = (e) => {
           localStorage.setItem("lastResult", result);
         }
       }
-      checkEntry(displayInput.value)
+      checkEntry(displayInput.value);
       break;
 
     case targetText === "AC":
@@ -91,7 +110,10 @@ const buttonAction = (e) => {
         lastChar === "/"
       ) {
         operatorAddToInput[lastChar]--;
+      } else if (lastChar === ".") {
+        dotUsed--;
       }
+
       result = result.toString().slice(0, -1);
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
@@ -125,6 +147,19 @@ const buttonAction = (e) => {
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
 
+      break;
+
+    case targetText === ".":
+      if (result === "") {
+        return;
+      }
+      if (dotUsed > 0) {
+        return;
+      }
+      dotUsed++;
+      result += targetText;
+      displayInput.value = result;
+      localStorage.setItem("lastResult", result);
       break;
 
     default:
