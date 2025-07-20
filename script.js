@@ -33,23 +33,7 @@ themeBtn.addEventListener("click", toggleTheme);
 // Calculator Elements Select & Variable
 const displayInput = document.getElementById("display-input");
 const buttons = document.querySelectorAll("button.row");
-const validInput = [
-  "0",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  ".",
-  "+",
-  "-",
-  "*",
-  "/",
-];
+const validInput = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", "*", "/" ];
 let operatorAddToInput = { "+": 0, "-": 0, "*": 0, "/": 0 };
 let dotUsed = 0;
 const operatorKeys = Object.keys(operatorAddToInput);
@@ -60,20 +44,6 @@ if (localStorage.getItem("lastResult")) {
   displayInput.value = localStorage.getItem("lastResult");
 }
 
-function checkEntry(entry) {
-  const entryArray = entry.split("");
-  const entryExisted = entryArray.map((entryLetter) =>
-    validInput.includes(entryLetter)
-  );
-
-  if (entryExisted.includes(false)) {
-    return;
-  } else {
-    result = eval(entry);
-    displayInput.value = result;
-    localStorage.setItem("lastResult", result);
-  }
-}
 
 const buttonAction = (e) => {
   const targetText = e.target.textContent;
@@ -88,6 +58,22 @@ const buttonAction = (e) => {
 
     case targetText === "=":
       operatorKeys.forEach((operator) => (operatorAddToInput[operator] = 0));
+      function checkEntry(entry) {
+        const entryArray = entry.split("");
+        const entryExisted = entryArray.map((entryLetter) =>
+            validInput.includes(entryLetter)
+        );
+
+        if (entryExisted.includes(false)) {
+          alert("Please Enter a Valid Charechter or Only Used Buttons")
+          return;
+        } else {
+          result = eval(entry);
+          displayInput.value = result;
+          localStorage.setItem("lastResult", result);
+        }
+  
+      }
       checkEntry(displayInput.value);
       break;
 
@@ -158,6 +144,9 @@ const buttonAction = (e) => {
       break;
 
     default:
+      if(!validInput.includes(targetText)){
+        return;        
+      }
       result += targetText;
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
