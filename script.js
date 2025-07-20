@@ -82,6 +82,7 @@ const buttonAction = (e) => {
 
     case targetText === "AC":
       operatorKeys.forEach((operator) => (operatorAddToInput[operator] = 0));
+      dotUsed = 0;
       result = "";
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
