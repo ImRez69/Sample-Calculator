@@ -47,7 +47,6 @@ if (localStorage.getItem("lastResult")) {
   displayInput.value = localStorage.getItem("lastResult");
 }
 
-
 const buttonAction = (e) => {
   const targetText = e.target.textContent;
   switch (true) {
