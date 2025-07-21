@@ -51,6 +51,7 @@ const validInput = [
   "/",
 ];
 let operatorAddToInput = { "+": 0, "-": 0, "*": 0, "/": 0 };
+// let dotUsed = 0;
 const operatorKeys = Object.keys(operatorAddToInput);
 let result = "";
 
@@ -131,9 +132,10 @@ const buttonAction = (e) => {
       break;
 
     case targetText === ".":
-      if (emptyInput(displayInput.value)) {
+      if (emptyInput(displayInput.value) || dotUsed > 0) {
         return;
       }
+      // dotUsed++;
       result += targetText;
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
@@ -146,12 +148,12 @@ const buttonAction = (e) => {
       if (emptyInput(displayInput.value)) {
         return;
       }
-      for (let i = 0; i < operatorKeys.length; i++) {
-        if (operatorAddToInput[operatorKeys[i]]) {
-          return;
-        }
-      }
-      operatorAddToInput[targetText]++;
+      // for (let i = 0; i < operatorKeys.length; i++) {
+      //   if (operatorAddToInput[operatorKeys[i]]) {
+      //     return;
+      //   }
+      // }
+      // operatorAddToInput[targetText]++;
       result += targetText;
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
