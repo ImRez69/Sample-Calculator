@@ -33,9 +33,24 @@ themeBtn.addEventListener("click", toggleTheme);
 // Calculator Elements Select & Variable
 const displayInput = document.getElementById("display-input");
 const buttons = document.querySelectorAll("button.row");
-const validInput = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", "*", "/" ];
+const validInput = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  ".",
+  "+",
+  "-",
+  "*",
+  "/",
+];
 let operatorAddToInput = { "+": 0, "-": 0, "*": 0, "/": 0 };
-let dotUsed = 0;
 const operatorKeys = Object.keys(operatorAddToInput);
 let result = "";
 
@@ -63,18 +78,17 @@ const buttonAction = (e) => {
       function checkEntry(entry) {
         const entryArray = entry.split("");
         const entryExisted = entryArray.map((entryLetter) =>
-            validInput.includes(entryLetter)
+          validInput.includes(entryLetter)
         );
 
         if (entryExisted.includes(false)) {
-          alert("Please Enter a Valid Charechter or Only Used Buttons")
+          alert("Please Enter a Valid Charechter or Only Used Buttons");
           return;
         } else {
           result = eval(entry);
           displayInput.value = result;
           localStorage.setItem("lastResult", result);
         }
-  
       }
       checkEntry(displayInput.value);
       break;
@@ -117,16 +131,18 @@ const buttonAction = (e) => {
       break;
 
     case targetText === ".":
-      if (emptyInput(displayInput.value) || dotUsed > 0) {
+      if (emptyInput(displayInput.value)) {
         return;
       }
-      dotUsed++;
       result += targetText;
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
       break;
 
-    case targetText === "+" || targetText === "-" || targetText === "*" || targetText === "/":
+    case targetText === "+" ||
+      targetText === "-" ||
+      targetText === "*" ||
+      targetText === "/":
       if (emptyInput(displayInput.value)) {
         return;
       }
@@ -143,8 +159,8 @@ const buttonAction = (e) => {
       break;
 
     default:
-      if(!validInput.includes(targetText)){
-        return;        
+      if (!validInput.includes(targetText)) {
+        return;
       }
       result += targetText;
       displayInput.value = result;
