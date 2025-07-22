@@ -89,13 +89,13 @@ const buttonAction = (e) => {
           validInput.includes(entryLetter)
         );
 
-        if (entryExisted.includes(false)) {
-          alert("Please Enter a Valid Charechter or Only Used Buttons");
-          return;
-        } else {
+        if (!entryExisted.includes(false)) {
           result = eval(entry);
           displayInput.value = result;
           localStorage.setItem("lastResult", result);
+        } else {
+          alert("Please Enter a Valid Charechter or Only Used Buttons");
+          return;
         }
       }
       checkEntry(displayInput.value);
@@ -111,15 +111,8 @@ const buttonAction = (e) => {
 
     case targetText === "DEL":
       const lastChar = result.toString().slice(result.length - 1);
-      if (
-        lastChar === "+" ||
-        lastChar === "-" ||
-        lastChar === "*" ||
-        lastChar === "/"
-      ) {
+      if ( lastChar === "+" || lastChar === "-" || lastChar === "*" || lastChar === "/") {
         operatorAddToInput[lastChar]--;
-      } else if (lastChar === ".") {
-        dotUsed = 0;
       }
 
       result = result.toString().slice(0, -1);
@@ -145,6 +138,7 @@ const buttonAction = (e) => {
       if (emptyInput(displayInput.value)) {
         return;
       }
+
       result += targetText;
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
