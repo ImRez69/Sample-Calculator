@@ -51,12 +51,19 @@ const validInput = [
   "/",
 ];
 let operatorAddToInput = { "+": 0, "-": 0, "*": 0, "/": 0 };
-// let dotUsed = 0;
 const operatorKeys = Object.keys(operatorAddToInput);
 let result = "";
 
-// Empty Input Function
+// Empty Input Check Function
 const emptyInput = (input) => input === "";
+
+// Last Character is Operator Check Function
+const lastCharOperatorCheck = (value) => {
+  const lastCharOfValue = value.toString().slice(value.length - 1);
+  if (operatorKeys.includes(lastCharOfValue)) {
+    return true;
+  }
+};
 
 // Read Last Result From Local Storge
 if (localStorage.getItem("lastResult")) {
@@ -121,6 +128,9 @@ const buttonAction = (e) => {
       break;
 
     case targetText === "%":
+      if (emptyInput(displayInput.value)) {
+        return;
+      }
       for (let i = 0; i < operatorKeys.length; i++) {
         if (result.toString().includes(operatorKeys[i])) {
           return;
@@ -132,10 +142,9 @@ const buttonAction = (e) => {
       break;
 
     case targetText === ".":
-      if (emptyInput(displayInput.value) || dotUsed > 0) {
+      if (emptyInput(displayInput.value)) {
         return;
       }
-      // dotUsed++;
       result += targetText;
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
@@ -148,15 +157,14 @@ const buttonAction = (e) => {
       if (emptyInput(displayInput.value)) {
         return;
       }
-      // for (let i = 0; i < operatorKeys.length; i++) {
-      //   if (operatorAddToInput[operatorKeys[i]]) {
-      //     return;
-      //   }
-      // }
-      // operatorAddToInput[targetText]++;
-      result += targetText;
-      displayInput.value = result;
-      localStorage.setItem("lastResult", result);
+
+      if (lastCharOperatorCheck(displayInput.value)) {
+        return;
+      } else {
+        result += targetText;
+        displayInput.value = result;
+        localStorage.setItem("lastResult", result);
+      }
 
       break;
 
