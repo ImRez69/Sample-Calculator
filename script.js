@@ -52,7 +52,9 @@ const validInput = [
 ];
 let operatorAddToInput = { "+": 0, "-": 0, "*": 0, "/": 0 };
 const operatorKeys = Object.keys(operatorAddToInput);
-let lastCharOfValue = displayInput.value.toString().slice(displayInput.value.length - 1);
+let lastCharOfValue = displayInput.value
+  .toString()
+  .slice(displayInput.value.length - 1);
 let result = "";
 let dotUsed = 0;
 
@@ -145,8 +147,14 @@ const buttonAction = (e) => {
       if (emptyInput(displayInput.value)) {
         return;
       }
-      lastCharOfValue = displayInput.value.toString().slice(displayInput.value.length - 1);
-      if (lastCharOfValue !== "." && !operatorKeys.includes(lastCharOfValue) && dotUsed === 0) {
+      lastCharOfValue = displayInput.value
+        .toString()
+        .slice(displayInput.value.length - 1);
+      if (
+        lastCharOfValue !== "." &&
+        !operatorKeys.includes(lastCharOfValue) &&
+        dotUsed === 0
+      ) {
         dotUsed++;
         result += targetText;
         displayInput.value = result;
@@ -156,17 +164,26 @@ const buttonAction = (e) => {
       }
       break;
 
-    case targetText === "+" || targetText === "-" || targetText === "*" || targetText === "/":
-      
-      lastCharOfValue = displayInput.value.toString().slice(displayInput.value.length - 1);
+    case targetText === "+" ||
+      targetText === "-" ||
+      targetText === "*" ||
+      targetText === "/":
+      lastCharOfValue = displayInput.value
+        .toString()
+        .slice(displayInput.value.length - 1);
 
-      if ( emptyInput(displayInput.value) || operatorKeys.includes(lastCharOfValue) ) { 
-        return; 
+      if (
+        emptyInput(displayInput.value) ||
+        operatorKeys.includes(lastCharOfValue)
+      ) {
+        return;
       }
+
       dotUsed = 0;
       result += targetText;
       displayInput.value = result;
       localStorage.setItem("lastResult", result);
+
       break;
 
     default:
