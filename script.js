@@ -81,11 +81,10 @@ const buttonAction = (e) => {
     case targetText === "☀️" || targetText === "🌙":
       return;
 
-    // Calculator Buttons & Action
-    case displayInput.value === "" && targetText === "=":
-      return;
-
     case targetText === "=":
+      if (emptyInput(displayInput.value)) {
+        return;
+      }
       operatorKeys.forEach((operator) => (operatorAddToInput[operator] = 0));
       function checkEntry(entry) {
         const entryArray = entry.split("");
