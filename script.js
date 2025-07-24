@@ -88,19 +88,13 @@ const buttonAction = (e) => {
       operatorKeys.forEach((operator) => (operatorAddToInput[operator] = 0));
       function checkEntry(entry) {
         const entryArray = entry.split("");
-        if(operatorKeys.includes(entryArray[entryArray.length - 1])){
-          console.log(entry);
-          console.log(entryArray);
+        if (operatorKeys.includes(entryArray[entryArray.length - 1])) {
           entryArray.pop();
-          entry = String(entryArray)
-          console.log(entry);
-          console.log(entryArray);
+          entry = entryArray.toString().replace(/,/g, "");
         }
-
         const entryExisted = entryArray.map((entryLetter) =>
           validInput.includes(entryLetter)
         );
-
         if (!entryExisted.includes(false)) {
           result = eval(entry);
           displayInput.value = result;
