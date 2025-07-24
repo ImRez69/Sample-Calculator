@@ -33,28 +33,10 @@ themeBtn.addEventListener("click", toggleTheme);
 // Calculator Elements Select & Variable
 const displayInput = document.getElementById("display-input");
 const buttons = document.querySelectorAll("button.row");
-const validInput = [
-  "0",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  ".",
-  "+",
-  "-",
-  "*",
-  "/",
-];
+const validInput = [ "0" ,"1" ,"2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", "*", "/", ];
 let operatorAddToInput = { "+": 0, "-": 0, "*": 0, "/": 0 };
 const operatorKeys = Object.keys(operatorAddToInput);
-let lastCharOfValue = displayInput.value
-  .toString()
-  .slice(displayInput.value.length - 1);
+let lastCharOfValue = displayInput.value.toString().slice(displayInput.value.length - 1);
 let result = "";
 let dotUsed = 0;
 
@@ -69,18 +51,13 @@ const lastCharOperatorCheck = (value) => {
   }
 };
 
-// Read Last Result From Local Storge
-if (localStorage.getItem("lastResult")) {
-  displayInput.value = localStorage.getItem("lastResult");
-}
-
 const buttonAction = (e) => {
   const targetText = e.target.textContent;
   switch (true) {
     // Theme Button
     case targetText === "☀️" || targetText === "🌙":
       return;
-
+      
     case targetText === "=":
       if (emptyInput(displayInput.value)) {
         return;
@@ -98,7 +75,6 @@ const buttonAction = (e) => {
         if (!entryExisted.includes(false)) {
           result = eval(entry);
           displayInput.value = result;
-          localStorage.setItem("lastResult", result);
         } else {
           alert("Please Enter a Valid Charechter or Only Used Buttons");
           return;
@@ -112,28 +88,20 @@ const buttonAction = (e) => {
       dotUsed = 0;
       result = "";
       displayInput.value = result;
-      localStorage.setItem("lastResult", result);
       break;
 
     case targetText === "DEL":
       const lastChar = result.toString().slice(result.length - 1);
-      if (
-        lastChar === "+" ||
-        lastChar === "-" ||
-        lastChar === "*" ||
-        lastChar === "/"
-      ) {
+      if ( lastChar === "+" || lastChar === "-" || lastChar === "*" || lastChar === "/" ) {
         operatorAddToInput[lastChar]--;
       }
-
       result = result.toString().slice(0, -1);
       displayInput.value = result;
-      localStorage.setItem("lastResult", result);
       break;
 
     case targetText === "%":
-      if (emptyInput(displayInput.value)) {
-        return;
+      if (emptyInput(displayInput.value)){
+        return; 
       }
       for (let i = 0; i < operatorKeys.length; i++) {
         if (result.toString().includes(operatorKeys[i])) {
@@ -142,50 +110,30 @@ const buttonAction = (e) => {
       }
       result /= 100;
       displayInput.value = result;
-      localStorage.setItem("lastResult", result);
       break;
 
     case targetText === ".":
       if (emptyInput(displayInput.value)) {
         return;
       }
-      lastCharOfValue = displayInput.value
-        .toString()
-        .slice(displayInput.value.length - 1);
-      if (
-        lastCharOfValue !== "." &&
-        !operatorKeys.includes(lastCharOfValue) &&
-        dotUsed === 0
-      ) {
+      lastCharOfValue = displayInput.value.toString().slice(displayInput.value.length - 1);
+      if ( lastCharOfValue !== "." && !operatorKeys.includes(lastCharOfValue) && dotUsed === 0 ) {
         dotUsed++;
         result += targetText;
         displayInput.value = result;
-        localStorage.setItem("lastResult", result);
       } else {
         return;
       }
       break;
 
-    case targetText === "+" ||
-      targetText === "-" ||
-      targetText === "*" ||
-      targetText === "/":
-      lastCharOfValue = displayInput.value
-        .toString()
-        .slice(displayInput.value.length - 1);
-
-      if (
-        emptyInput(displayInput.value) ||
-        operatorKeys.includes(lastCharOfValue)
-      ) {
+    case targetText === "+" || targetText === "-" || targetText === "*" || targetText === "/":
+      lastCharOfValue = displayInput.value.toString().slice(displayInput.value.length - 1);
+      if ( emptyInput(displayInput.value) || operatorKeys.includes(lastCharOfValue)){
         return;
       }
-
       dotUsed = 0;
       result += targetText;
       displayInput.value = result;
-      localStorage.setItem("lastResult", result);
-
       break;
 
     default:
@@ -194,7 +142,6 @@ const buttonAction = (e) => {
       }
       result += targetText;
       displayInput.value = result;
-      localStorage.setItem("lastResult", result);
       break;
   }
 };
