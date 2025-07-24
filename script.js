@@ -145,6 +145,4 @@ const buttonAction = (e) => {
       break;
   }
 };
-buttons.forEach((button) => {
-  button.addEventListener("click", buttonAction);
-});
+buttons.forEach( (button) => { button.addEventListener("click", buttonAction); } );
