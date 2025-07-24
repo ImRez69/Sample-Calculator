@@ -120,3 +120,7 @@ button.operator {
   color: #151d25;
   font-size: 1.2rem;
 }
+
+button.operator#star,button.operator#minus{
+  font-size: 1.8rem;
+}
