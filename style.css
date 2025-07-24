@@ -1,13 +1,13 @@
 @font-face {
-  font-family: Vazirmatn;
-  src: local("Vazirmatn"), url(./Font/Vazirmatn.ttf) format(truetype);
+  font-family: PTSans;
+  src: local("PTSans-Regular"), url(./Font/PTSans-Regular.ttf) format(truetype);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Vazirmatn;
+  font-family: PTSans;
   border: none;
   outline: none;
 }
