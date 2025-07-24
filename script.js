@@ -34,8 +34,7 @@ themeBtn.addEventListener("click", toggleTheme);
 const displayInput = document.getElementById("display-input");
 const buttons = document.querySelectorAll("button.row");
 const validInput = [ "0" ,"1" ,"2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", "*", "/", ];
-let operatorAddToInput = { "+": 0, "-": 0, "*": 0, "/": 0 };
-const operatorKeys = Object.keys(operatorAddToInput);
+const operatorAddToInput = ["+" , "-" , "*" ,"/" ];
 let lastCharOfValue = displayInput.value.toString().slice(displayInput.value.length - 1);
 let result = "";
 let dotUsed = 0;
@@ -46,7 +45,7 @@ const emptyInput = (input) => input === "";
 // Last Character is Operator Check Function
 const lastCharOperatorCheck = (value) => {
   const lastCharOfValue = value.toString().slice(value.length - 1);
-  if (operatorKeys.includes(lastCharOfValue)) {
+  if (operatorAddToInput.includes(lastCharOfValue)) {
     return true;
   }
 };
@@ -62,10 +61,10 @@ const buttonAction = (e) => {
       if (emptyInput(displayInput.value)) {
         return;
       }
-      operatorKeys.forEach((operator) => (operatorAddToInput[operator] = 0));
+      // operatorAddToInput.forEach((operator) => (operatorAddToInput[operator] = 0));
       function checkEntry(entry) {
         const entryArray = entry.split("");
-        if (operatorKeys.includes(entryArray[entryArray.length - 1])) {
+        if (operatorAddToInput.includes(entryArray[entryArray.length - 1])) {
           entryArray.pop();
           entry = entryArray.toString().replace(/,/g, "");
         }
@@ -84,17 +83,12 @@ const buttonAction = (e) => {
       break;
 
     case targetText === "AC":
-      operatorKeys.forEach((operator) => (operatorAddToInput[operator] = 0));
       dotUsed = 0;
       result = "";
       displayInput.value = result;
       break;
 
     case targetText === "DEL":
-      const lastChar = result.toString().slice(result.length - 1);
-      if ( lastChar === "+" || lastChar === "-" || lastChar === "*" || lastChar === "/" ) {
-        operatorAddToInput[lastChar]--;
-      }
       result = result.toString().slice(0, -1);
       displayInput.value = result;
       break;
@@ -103,8 +97,8 @@ const buttonAction = (e) => {
       if (emptyInput(displayInput.value)){
         return; 
       }
-      for (let i = 0; i < operatorKeys.length; i++) {
-        if (result.toString().includes(operatorKeys[i])) {
+      for (let i = 0; i < operatorAddToInput.length; i++) {
+        if (result.toString().includes(operatorAddToInput[i])) {
           return;
         }
       }
@@ -117,7 +111,7 @@ const buttonAction = (e) => {
         return;
       }
       lastCharOfValue = displayInput.value.toString().slice(displayInput.value.length - 1);
-      if ( lastCharOfValue !== "." && !operatorKeys.includes(lastCharOfValue) && dotUsed === 0 ) {
+      if ( lastCharOfValue !== "." && !operatorAddToInput.includes(lastCharOfValue) && dotUsed === 0 ) {
         dotUsed++;
         result += targetText;
         displayInput.value = result;
@@ -128,7 +122,7 @@ const buttonAction = (e) => {
 
     case targetText === "+" || targetText === "-" || targetText === "*" || targetText === "/":
       lastCharOfValue = displayInput.value.toString().slice(displayInput.value.length - 1);
-      if ( emptyInput(displayInput.value) || operatorKeys.includes(lastCharOfValue)){
+      if ( emptyInput(displayInput.value) || operatorAddToInput.includes(lastCharOfValue)){
         return;
       }
       dotUsed = 0;
