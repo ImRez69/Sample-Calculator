@@ -1,6 +1,6 @@
 @font-face {
   font-family: PTSans;
-  src: local("PTSans-Regular"), url(./Font/PTSans-Regular.ttf) format(truetype);
+  src: local("Vazirmatn"), url(./Source/Font/Vazirmatn.ttf) format(truetype);
 }
 
 * {
@@ -121,6 +121,7 @@ button.operator {
   font-size: 1.2rem;
 }
 
-button.operator#star,button.operator#minus{
+button.operator#star,
+button.operator#minus {
   font-size: 1.8rem;
 }
