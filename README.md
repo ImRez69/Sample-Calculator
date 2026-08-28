@@ -38,7 +38,7 @@ Open the application:
 Open index.html in a web browser (e.g., Chrome, Firefox).  
 No additional dependencies or build steps are required, as the project uses vanilla HTML, CSS, and JavaScript.  
 Optionally, you can view a live demo (add link here, e.g., via GitHub Pages or htmlpreview.github.io).
-- Also, you can run `index.html` [Here](https://htmlpreview.github.io/?https://github.com/ImRez69/Simple-Calculator/blob/main/index.html).
+- Also, you can run `index.html` [Here](https://htmlpreview.github.io/?https://github.com/alir3za-samadi/Simple-Calculator/blob/main/index.html).
 
 
 
